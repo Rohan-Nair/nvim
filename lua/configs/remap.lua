@@ -13,8 +13,6 @@ vim.keymap.set("n", "B", "%")
 vim.keymap.set("n", "<leader>n", "*", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>N", "#", { noremap = true, silent = true })
 
-vim.keymap.set("n", "`", "`zz", { noremap = true, silent = true })
-
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 
@@ -27,3 +25,29 @@ vim.keymap.set("n", "<C-k>", "<C-y>")
 vim.api.nvim_create_user_command("W", "w", {})
 vim.api.nvim_create_user_command("Wq", "wq", {})
 vim.api.nvim_create_user_command("WQ", "wq", {})
+vim.api.nvim_create_user_command("Q", "q", {})
+
+-- golang snippets
+vim.keymap.set(
+  "n",
+  "<leader>ee",
+  "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>ea",
+  "oassert.NoError(err, \"\")<Esc>F\";a"
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>ef",
+  "oif err != nil {<CR>}<Esc>Olog.Fatalf(\"error: %s\\n\", err.Error())<Esc>jj"
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>el",
+  "oif err != nil {<CR>}<Esc>O.logger.Error(\"error\", \"error\", err)<Esc>F.;i"
+)
